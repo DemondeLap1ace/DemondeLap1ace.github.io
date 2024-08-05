@@ -15,18 +15,24 @@ header-img: "img/post-bg-rwd.jpg"
 <div class="zh post-container">
 
     <!--copied from markdown -->
+    <blockquote><p>qwq<br>
+    qwq</p></blockquote>
 
-    <p>Closure，其实叫什么都可以_(┐「ε:)_主业玩树脂&硅胶小人/做饭&种菜/缝纫女工，偶尔会客串服务器保安和搭机器学习积木or单片机开发。</p>
+    <p>Closure，叫什么都可以_(┐「ε:)_主业玩树脂&硅胶小人/做饭&种菜/缝纫女工，偶尔会客串服务器保安和搭机器学习积木or单片机开发。
+</p>
 
-    <p>杂食向百合豚，网站里出现的薄荷绿卷发角色是看板娘小怜，已经认识12年了qwq同人产出都是关于她，短篇游戏建设中</p>
+    <p>杂食向百合豚，网站里出现的薄荷绿卷发角色是看板娘小怜，认识12年了qwq</p>
 
-   
+    
     <p></p>
     
     <h5>Talks</h5>
 
     <ul>
-        
+        <li><a href="https://github.com">GitHub</a></li>
+        <li><a href="http://jekyll.com.cn/">jekyll</a></li>
+        <li><a href="http://huangxuan.me/">Hux</a></li> 
+        <li><a href="https://analytics.google.com/analytics">Google Analytics</a></li>
     </ul>
 </div>
 
@@ -50,7 +56,6 @@ header-img: "img/post-bg-rwd.jpg"
     <li><a href="https://qiubaiying.github.io">BY</a></li>
     </ul>
 </div> -->
-
 <!-- Handle Language Change -->
 <script type="text/javascript">
     // get nodes
@@ -92,6 +97,36 @@ header-img: "img/post-bg-rwd.jpg"
 </script>
 
 
+<!-- Gitalk 评论 start  -->
+{% if site.gitalk.enable %}
+<!-- Gitalk link  -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+    <script type="text/javascript">
+    var gitalk = new Gitalk({
+    clientID: '{{site.gitalk.clientID}}',
+    clientSecret: '{{site.gitalk.clientSecret}}',
+    repo: '{{site.gitalk.repo}}',
+    owner: '{{site.gitalk.owner}}',
+    admin: ['{{site.gitalk.admin}}'],
+    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+    id: 'about',
+    });
+    gitalk.render('gitalk-container');
+</script>
+{% endif %}
+<!-- Gitalk end -->
+
+ <!-- disqus 评论框 start  -->
+{% if site.disqus.enable %}
+
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
@@ -107,4 +142,3 @@ header-img: "img/post-bg-rwd.jpg"
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
-
