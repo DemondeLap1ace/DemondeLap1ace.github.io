@@ -3,27 +3,22 @@ title: Closure's Blog
 SEOTitle: DemondeLap1ace
 header-img: img/post-bg-desk.jpg
 email: DemondeLap1ace@proton.me
-description: "Every failure is leading towards success."
+description: "我們可以把宇宙現在的狀態視為其過去的果以及未來的因。"
 keyword: ""
-url: "http://qiubaiying.github.io"          # your host, for absolute URL
+url: "http://DemondeLap1ace.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/DemondeLap1ace/DemondeLap1ace.github.io" # you code repository
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
+sidebar-about-description: "我們可以把宇宙現在的狀態視為其過去的果以及未來的因。"
 sidebar-avatar: /img/about-closure.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
 # SNS settings
 RSS: false
-# weibo_username:     qiubaiying
-zhihu_username:     qiubaiying
-github_username:    qiubaiying
-facebook_username:  baiying.qiu.7
-jianshu_username:   e71990ada2fd
-#twitter_username:   qiubaiying
+
 
 
 
