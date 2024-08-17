@@ -10,7 +10,9 @@ tags:
     - 随记
 ---
 
-[How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html "How To Ask Questions The Smart Way") 阅读随记
+[How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html "How To Ask Questions The Smart Way") 
+阅读随记
+
 [每个人上网前都该读的网络礼节手册](https://www.ietf.org/rfc/rfc1855.txt "每个人上网前都该读的网络礼节手册")
 
 ## Ⅰ
