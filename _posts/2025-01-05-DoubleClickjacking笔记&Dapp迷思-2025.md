@@ -1,6 +1,6 @@
 ---
 layout:     post                       
-title:      2025-01-05-DoubleClickjacking笔记&Dapp迷思-2025            
+title:      2025-01-05-DoubleClickjacking笔记&Dapp迷思         
 subtitle:   
 date:       2025-01-05               
 author:     Closure                         
