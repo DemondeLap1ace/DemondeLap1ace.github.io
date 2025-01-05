@@ -1,3 +1,14 @@
+---
+layout:     post                       
+title:      DoubleClickjacking笔记&dapp迷思         
+subtitle:   
+date:       2025-01-05               
+author:     Closure                         
+header-img: img/ 
+catalog: true                         
+tags:                                
+    - 随记
+---
 ﻿DoubleClickjacking是单击攻击的衍生变种，通过诱导用户双击页面按钮来触发的恶意操作的攻击方式，原理是攻击方通过设计网页来使用户在双击时实际触发的是隐藏了的恶意动作。这种攻击可以用来绕过用户的正常交互然后执行恶意的脚本，扩展一下即可在用户未察觉的情况下进行资金转移。单击攻击的实现简单粗暴，因为它是通过重定向或执行隐藏的表单提交等方式；DoubleClickjacking 则依赖于用户双击的时间窗口&时序控制。
 
 ---
