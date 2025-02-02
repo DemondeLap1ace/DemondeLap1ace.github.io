@@ -4,7 +4,7 @@ title:         Android-ALEAPP笔记
 subtitle:   
 date:       2025-02-02              
 author:     Closure                         
-header-img: img/20250202-1.jpg 
+header-img: img/20250202-1.png
 catalog: true                         
 tags:                               
     - Android
@@ -30,9 +30,9 @@ https://github.com/abrignoni/ALEAPP
 python aleapp.py -t <zip | tar | fs | gz> -i <path\_to\_extraction> -o <path\_for\_report\_output>
 ```
 
-![ ](/img/20250202-2.jpg)
-![ ](/img/20250202-3.jpg)
-![ ](/img/20250202-4.jpg)
+![ ](/img/20250202-2.png)
+![ ](/img/20250202-3.png)
+![ ](/img/20250202-4.png)
 
 **Report Home**
 
@@ -148,8 +148,8 @@ Android 系统自带的 UsageStatsService，用来记录用户在一段时间里
 
 ### 分析嫌疑应用
 
-![ ](/img/20250202-5.jpg)
-![ ](/img/20250202-6.jpg)
+![ ](/img/20250202-5.png)
+![ ](/img/20250202-6.png)
 
 Tick.olymptrade 谷歌搜索得出是金融交易软件
 
@@ -160,14 +160,14 @@ Tick.olymptrade 谷歌搜索得出是金融交易软件
 * signature (2)：只有与声明此权限的应用拥有相同签名的其他应用才可获得该权限（可以理解为“同一开发者的应用内部共享”）。
 * signatureOrSystem (3)​: 早期系统中存在的组合级别，仅当应用与系统签名相同或安装在系统分区（system app）时才能被授予。这在后续 Android 版本中逐渐弱化或被废弃。
   
-  ![ ](/img/20250202-7.jpg)
+  ![ ](/img/20250202-7.png)
 
 如图，olymptrade的Protection= 2，表示该权限为 signature 级别，仅限同一签名才能调用。而且只看到自定义权限 DYNAMIC\_RECEIVER\_NOT\_EXPORTED\_PERMISSION 和在 UsageStats 中实际用到的 WAKE\_LOCK、READ/WRITE\_EXTERNAL\_STORAGE，但是没有看到 READ\_SMS、READ\_CONTACTS 等更敏感权限。发现了该 App 在 2023-09-19（晚上 19:57 左右）和 2023-09-20（晚上 20:59 到 21:02 左右）都有使用痕迹，吻合了题目的酒店时间。
 
 ### “当我们在一起时，我的朋友接到了几个电话并让他回避。他说他欠来电者很多钱，但现在无力偿还”
 
-![ ](/img/20250202-8.jpg)
-![ ](/img/20250202-9.jpg)
+![ ](/img/20250202-8.png)
+![ ](/img/20250202-9.png)
 
 看通话记录和联系人直接得出债主联系方式和名字。
 +201172137258 Shaday wahab
@@ -178,7 +178,7 @@ Tick.olymptrade 谷歌搜索得出是金融交易软件
 
 首先查看wifi连接记录，发现没有可用的信息。
 
-![ ](/img/20250202-10.jpg)
+![ ](/img/20250202-10.png)
 
 **补充**：连接记录能帮助我们推断用户曾在哪里出现或​何时到达某个地点​。先找到​Wi-Fi 配置或历史，因为在 ALEAPP 可以看到 Wi-Fi Profiles, Wi-Fi Hotspot, Wifi Configuration Store Combined - 0 等，调查时关注字段：SSID、BSSID（MAC）、加密方式、最近连接时间、上次自动连接时间等。如果 SSID 名字包含 “HotelXYZ” 或 “StarbucksABC”，能直接联想到地理场所，如果仅有 BSSID，可通过在线数据库（Wigle ([https://wigle.net/](https://wigle.net/)  *这是一个全球性的 Wi-Fi AP 数据库，用户可上传收集到的 Wi-Fi 信息（BSSID、坐标等），形成庞大的众包地图，取证后可在 Wigle 上搜索BSSID，看是否有人在某地扫到过它*)，无法直接获取 GPS 定位或基站信息的情况下，Wi-Fi 数据往往能提供室内或特定场所的轨迹。
 
@@ -188,9 +188,9 @@ Tick.olymptrade 谷歌搜索得出是金融交易软件
 
 ### RecentActivity: Recent Tasks, Snapshots & Images
 
-![ ](/img/20250202-11.jpg)
-![ ](/img/20250202-12.jpg)
-![ ](/img/20250202-13.jpg)
+![ ](/img/20250202-11.png)
+![ ](/img/20250202-12.png)
+![ ](/img/20250202-13.png)
 
 ​**RecentActivity**​（或“Recent Tasks”）是安卓系统用于记录近期运行应用的列表，包含：
 
@@ -244,7 +244,7 @@ Tick.olymptrade 谷歌搜索得出是金融交易软件
 
 ### Discord
 
-![ ](/img/20250202-14.jpg)
+![ ](/img/20250202-14.png)
 
 从截图可见有两条聊天记录，均发生在同一个频道（​**Channel ID = 1153848030269804606**​）：
 
@@ -270,8 +270,8 @@ infern0\_o 提到：“Some changes have occurred in the plan.” “I have book
 
 ### 谷歌
 
-![ ](/img/20250202-15.jpg)
-![ ](/img/20250202-16.jpg)
+![ ](/img/20250202-15.png)
+![ ](/img/20250202-16.png)
 
 从 Visit Timestamp 与 Search Term 可以看出大部分访问集中在 ​2023-09-19（18:07 \~ 21:54左右），以及 ​2023-09-20（20:12 ~ 23:51）。主要内容为Gmail / Facebook / Amazon、YouTube和加密货币/交易平台，有相关搜索，如 “What is cryptocurrency trading?”、 “What are the best platforms for cryptocurrency trading?”还有旅游相关搜索，如 “What is the easiest country to travel to from Egypt?”以及航班变更/机票改签相关搜索，如 “How to reschedule an already booked flight?”
 
