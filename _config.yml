@@ -3,8 +3,7 @@ title: Closure's Blog
 SEOTitle: DemondeLap1ace
 header-img: img/index1.jpg
 email: DemondeLap1ace@proton.me
-description: "Drivin' down Mulholland, closin' both my eyes
-'Cause they say you get more famous when you die"
+description: "沒有任何事物會是含糊的，並且未來只會像過去般出現在拉普拉斯妖眼前。"
 keyword: ""
 url: "http://DemondeLap1ace.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -12,8 +11,7 @@ github_repo: "https://github.com/DemondeLap1ace/DemondeLap1ace.github.io" # you 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Drivin' down Mulholland, closin' both my eyes
-'Cause they say you get more famous when you die"
+sidebar-about-description: "沒有任何事物會是含糊的，並且未來只會像過去般出現在拉普拉斯妖眼前。"
 sidebar-avatar: /img/about-closure.png      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
