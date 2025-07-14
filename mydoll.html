@@ -1,0 +1,75 @@
+<html><head><link rel="stylesheet" type="text/css" href="https://unpkg.com/vditor@3.10.8/dist/index.css"/>
+<script src="https://unpkg.com/vditor@3.10.8/dist/js/i18n/zh_CN.js"></script>
+<script src="https://unpkg.com/vditor@3.10.8/dist/method.min.js"></script></head>
+<body><div class="vditor-reset" id="preview"><pre class="vditor-yml-front-matter"><code class="language-yaml">title: Mydoll
+
+layout: default
+
+description:** **
+
+header-img: &quot;img/mydoll.jpg&quot;
+
+permalink: /mydoll/</code></pre>
+<header class="intro-header" style="background-image: url(&#39;{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}&#39;)">
+<p>**  **<div class="container"></p>
+<p>**    **<div class="row"></p>
+<p>**      **<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"></p>
+<p>**        **<div class="site-heading" id="mydoll-heading"></p>
+<p>**          **<h1>{{ page.title }}</h1></p>
+<p>**          **<span class="subheading">{{ page.description }}</span></p>
+<p>**        **</div></p>
+<p>**      **</div></p>
+<p>**    **</div></p>
+<p>**  **</div></p>
+</header>
+<div class="container">
+<p>**  **<div class="row"></p>
+<p>**    **<div class="col-lg-10 col-lg-offset-1 col-md-12"></p>
+<p>**      **<p class="text-center">qwq</p></p>
+<p>**      **<div class="row"></p>
+<hr />
+<p>**        **<div class="col-sm-6 col-md-4 col-lg-3"></p>
+<p>**          **<div class="thumbnail"></p>
+<p>**            **<a href="{{ site.baseurl }}/img/dolls/doll1.jpg" target="\_blank"></p>
+<p>**              **&lt;img src=&quot;{{ site.baseurl }}/img/dolls/doll1.jpg&quot; alt=“test1” class=&quot;img-responsive img-rounded&quot;&gt;</p>
+<p>**            **</a></p>
+<p>**            **<div class="caption text-center">test1</div></p>
+<p>**          **</div></p>
+<p>**        **</div></p>
+<p>**        **</p>
+<p>**        **<div class="col-sm-6 col-md-4 col-lg-3"></p>
+<p>**          **<div class="thumbnail"></p>
+<p>**            **<a href="{{ site.baseurl }}/img/dolls/doll2.jpg" target="\_blank"></p>
+<p>**              **&lt;img src=&quot;{{ site.baseurl }}/img/dolls/doll2.jpg&quot; alt=“test”2 class=&quot;img-responsive img-rounded&quot;&gt;</p>
+<p>**            **</a></p>
+<p>**            **<div class="caption text-center">test2</div></p>
+<p>**          **</div></p>
+<p>**        **</div></p>
+<p>**        **</p>
+<p>**      **</div></p>
+<p>**      **<p class="text-muted text-center">qwq</p></p>
+<p>**    **</div></p>
+<p>**  **</div></p>
+</div>
+</div>
+<script>
+    const previewElement = document.getElementById('preview')
+    Vditor.setContentTheme('light', 'https://unpkg.com/vditor@3.10.8/dist/css/content-theme');
+    Vditor.codeRender(previewElement);
+    Vditor.highlightRender({"enable":true,"lineNumber":false,"defaultLang":"","style":"github"}, previewElement, 'https://unpkg.com/vditor@3.10.8');
+    Vditor.mathRender(previewElement, {
+        cdn: 'https://unpkg.com/vditor@3.10.8',
+        math: {"engine":"KaTeX","inlineDigit":false,"macros":{}},
+    });
+    Vditor.mermaidRender(previewElement, 'https://unpkg.com/vditor@3.10.8', 'classic');
+    Vditor.SMILESRender(previewElement, 'https://unpkg.com/vditor@3.10.8', 'classic');
+    Vditor.markmapRender(previewElement, 'https://unpkg.com/vditor@3.10.8');
+    Vditor.flowchartRender(previewElement, 'https://unpkg.com/vditor@3.10.8');
+    Vditor.graphvizRender(previewElement, 'https://unpkg.com/vditor@3.10.8');
+    Vditor.chartRender(previewElement, 'https://unpkg.com/vditor@3.10.8', 'classic');
+    Vditor.mindmapRender(previewElement, 'https://unpkg.com/vditor@3.10.8', 'classic');
+    Vditor.abcRender(previewElement, 'https://unpkg.com/vditor@3.10.8');
+    Vditor.mediaRender(previewElement);
+    Vditor.speechRender(previewElement);
+</script>
+<script src="https://unpkg.com/vditor@3.10.8/dist/js/icons/ant.js"></script></body></html>
