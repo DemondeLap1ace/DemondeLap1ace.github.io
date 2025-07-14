@@ -3,6 +3,18 @@ layout: page
 description: "为什么这个房间会烧起来呢？"
 ---
 
+<!-- 简易导航栏 -->
+<nav style="margin: 20px 0; text-align: center;">
+  <ul style="list-style: none; padding: 0; display: inline-flex; gap: 20px; font-weight: bold;">
+    <li><a href="{{ site.baseurl }}/">Home</a></li>
+    <li><a href="{{ site.baseurl }}/about/">About</a></li>
+    <li><a href="{{ site.baseurl }}/tags/">Tags</a></li>
+    <li><a href="{{ site.baseurl }}/mydoll/">Mydoll</a></li>
+  </ul>
+</nav>
+<hr>
+
+<!-- 首页文章循环 -->
 {% for post in paginator.posts %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
@@ -25,7 +37,7 @@ description: "为什么这个房间会烧起来呢？"
 <hr>
 {% endfor %}
 
-<!-- Pager -->
+<!-- 分页 -->
 {% if paginator.total_pages > 1 %}
 <ul class="pager">
     {% if paginator.previous_page %}
@@ -40,3 +52,4 @@ description: "为什么这个房间会烧起来呢？"
     {% endif %}
 </ul>
 {% endif %}
+
