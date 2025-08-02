@@ -2,7 +2,7 @@
 layout:     post                       
 title:      Deep Researcher with Test-Time Diffusion
 subtitle:   
-date:       2025-08-02  
+date:       2025-08-09 
 author:     Closure                         
 header-img: img/0727.jpg
 catalog: true                         
