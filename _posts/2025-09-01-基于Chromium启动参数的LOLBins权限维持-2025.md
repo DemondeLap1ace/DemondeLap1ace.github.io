@@ -1,8 +1,8 @@
 ---
 layout:     post                       
-title:     基于Chromium启动参数等LOLBins权限维持 
+title:     基于Chromium启动参数的LOLBins权限维持 
 subtitle:   
-date:       2025-09-01     
+date:       2025-09-02       
 author:     Closure                         
 header-img: img/0727.jpg
 catalog: true                         
@@ -13,8 +13,8 @@ tags:
 
 还没有彻底开源，现在机子只有mac，等试完win和linux之后都能顺利捕获摄像头和麦克风再放主页qwq前几张是失败的，后面那几张是成功之后的。
 
-![ ](/img/20250902-1.png)
-![ ](/img/20250902-2.png)
+![ ](/img/20250901-1.png)
+![ ](/img/20250901-2.png)
 
 ### LOLBins权限维持
 
