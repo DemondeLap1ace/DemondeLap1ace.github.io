@@ -41,15 +41,15 @@ tags:
 
 **Security Policy & Privacy**
 
-* --user-data-dir="<路径>": (极其重要) 指定一个独立的用户数据目录。在红队攻击中，这用于创建一个“无痕”的、与用户正常浏览器完全隔离的运行环境。
+* --user-data-dir="<路径>": 指定一个独立的用户数据目录。在红队攻击中，这用于创建一个“无痕”的、与用户正常浏览器完全隔离的运行环境。
 * --proxy-server="[地址:端口](%E5%9C%B0%E5%9D%80:%E7%AB%AF%E5%8F%A3)": 强制浏览器通过指定的代理服务器联网，用于流量转发和伪装。
-* --ignore-certificate-errors: (高风险) 忽略所有HTTPS证书错误，让浏览器连接到使用了无效或自签名证书的网站。
-* --disable-web-security: (极高风险) 禁用同源策略等Web安全核心功能，允许页面跨域请求资源。在开发中用于调试，但在攻击中可能被用于信息窃取。
+* --ignore-certificate-errors: 忽略所有HTTPS证书错误，让浏览器连接到使用了无效或自签名证书的网站。
+* --disable-web-security: 禁用同源策略等Web安全核心功能，允许页面跨域请求资源。在开发中用于调试，但在攻击中可能被用于信息窃取。
 
 **Permission Bypassing**
 
-* --auto-accept-camera-and-microphone-capture: (攻击核心) 自动同意网页使用摄像头和麦克风的权限请求。
-* --auto-select-desktop-capture-source="Entire screen": (攻击核心) 自动同意网页共享整个屏幕的请求。
+* --auto-accept-camera-and-microphone-capture: 自动同意网页使用摄像头和麦克风的权限请求。
+* --auto-select-desktop-capture-source="Entire screen":  自动同意网页共享整个屏幕的请求。
 * --use-fake-ui-for-media-stream: 创建一个虚假的媒体捕获界面，而不是真实的弹窗，用于欺骗或自动化测试。
 
 完整的在这里 https://peter.sh/experiments/chromium-command-line-switches/
