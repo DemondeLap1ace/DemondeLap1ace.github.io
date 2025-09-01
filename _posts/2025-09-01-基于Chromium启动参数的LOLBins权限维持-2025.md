@@ -2,7 +2,7 @@
 layout:     post                       
 title:     基于Chromium启动参数等LOLBins权限维持 
 subtitle:   
-date:       2025-09-02       
+date:       2025-09-01     
 author:     Closure                         
 header-img: img/0727.jpg
 catalog: true                         
