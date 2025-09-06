@@ -4,7 +4,7 @@ title:     Silver Fox-BYOVD与内存攻击链
 subtitle:   
 date:       2025-09-06       
 author:     Closure                         
-header-img: img/fm.jpg
+header-img: img/fm1.jpg
 catalog: true                         
 tags:                               
     - 笔记
