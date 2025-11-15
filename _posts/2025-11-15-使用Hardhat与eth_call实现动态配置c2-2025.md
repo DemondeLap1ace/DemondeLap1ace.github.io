@@ -115,7 +115,7 @@ contract SimpleStorage {
 
 链一下本地的
 
-![ ](/img/20251115-4.png)
+![ ](/img/20251115-4.jpg)
 合约地址有了
 
 Remix 作为JSON-RPC客户端，现在已经有了一个正在运行的节点和一个部署在上面的实时合约了
@@ -254,7 +254,7 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 回到终端运行node interact.js成功、
 
 刷新扩展已经能看到成功读取了
-![ ](/img/20251115-7.png)
+![ ](/img/20251115-7.jpg)
 
 虽然c2地址是加密的，但是高频率的eth_call 请求可能会成为一个行为指纹（
 
