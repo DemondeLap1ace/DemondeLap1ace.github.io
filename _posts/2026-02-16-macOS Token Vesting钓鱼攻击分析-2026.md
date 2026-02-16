@@ -10,6 +10,8 @@ tags:
 - 安全
 ---
 
+最近有个基于mac的[Token Vesting钓鱼投毒](https://slowmist.medium.com/threat-intelligence-analysis-of-token-vesting-phishing-poisoning-50f39f5b9718 "Token Vesting钓鱼投毒")，看了下报告思路很有参考性
+
 ![ ](/img/20260216-1.png)
 
 攻击者搞了个区块链审计的话术，通过邮件发送带有双扩展名的文件让受害者误以为是Word文档，实际上是AppleScript的脚本。运行之后脚本会启动mac虚假的系统更新界面并收集CPU架构和系统版本等基础信息回传给C2。
