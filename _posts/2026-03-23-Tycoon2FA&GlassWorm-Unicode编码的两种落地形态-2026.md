@@ -23,6 +23,7 @@ https://www.bridewell.com/insights/blogs/detail/the-rise-and-fall-of-tycoon-2fa-
 
 Tycoon2FA是一个钓鱼平台，去慕名看了他们tg频道快照，120 美元/10天订阅好贵......技术定位是针对微软和gmail绕过的AiTM钓鱼，拿反向代理服务器托管钓鱼页面来截获凭证和cookie
 
+
 ![ ](/img/20260323-1.png)
 
 基础设施由钓鱼落地页&目标检查/cookie收集组件构成，能部署在不同的FQDN上面。按照微软2025年8月的版本来看有七个攻击层面:钓鱼邮件链接 →PDF →PDF深层重定向→Cloudflare Turnstile/自定义CAPTCHA→反机器人检查→ 邮箱验证页面 → 假Microsoft 365登录页
@@ -122,17 +123,18 @@ Tycoon 2FA的落地页用Halfwidth Hangul Filler U+FFA0 代表二进制0，用Ha
 
 直接eval需要显式的解码+执行代码，在源码中会看到明显的eval(decode(...))模式，容易被捕获，Proxy get陷阱将解码逻辑隐藏在属性访问行为中，源码中看到的只是一个属性访问操作，没有显式的eval调用
 
-按照公开逻辑让gemini复现了测试页面，整合在下面了。
+按照公开逻辑让gemini复现了测试页面，整合在下面了qwq
 
-把一段明文JS变成人眼看不到的字符序列，然后嵌入html，编码算法和↑一样，U+FFA0和 U+3164。脚本将payload的每个ASCII字符转换为8位二进制表示，然后逐位替换：二进制0用U+FFA0，二进制1用U+3164代，一段46字符的 alert(...)语句编码后变成360个不可见字符。
+> 把一段明文JS变成人眼看不到的字符序列，然后嵌入html，编码算法和↑一样，U+FFA0和 U+3164。脚本将payload的每个ASCII字符转换为8位二进制表示，然后逐位替换：二进制0用U+FFA0，二进制1用U+3164代，一段46字符的 alert(...)语句编码后变成360个不可见字符。
 
-生成的html文件将不可见字符直接写入JS的一个模板字符串常量中，这些字符没有字形在浏览器的查看源代码中这个常量看起来是空的，但是JS引擎完整地保留了它们。
+>生成的html文件将不可见字符直接写入JS的一个模板字符串常量中，这些字符没有字形在浏览器的查看源代码中这个常量看起来是空的，但是JS引擎完整地保留了它们。
 
-html复现了Martin Kleppe的Proxy get陷阱执行链，是Tycoon 2F真实钓鱼攻击中原封不动使用的那段。用了JS Proxy 对象的属性访问拦截能力，创建了一个空对象的Proxy，定义了get陷阱，当任何属性被访问时，陷阱函数接收属性名作为参数。然后代码访问这个Proxy的一个属性，属性名是360个不可见Hangul字符。
+>html复现了Martin Kleppe的Proxy get陷阱执行链，是Tycoon 2F真实钓鱼攻击中原封不动使用的那段。用了JS Proxy 对象的属性访问拦截能力，创建了一个空对象的Proxy，定义了get陷阱，当任何属性被访问时，陷阱函数接收属性名作为参数。然后代码访问这个Proxy的一个属性，属性名是360个不可见Hangul字符。
 
-属性访问触发的时候，get 陷阱内部执行解码，+("ﾠ" > c)，U+FFA0 的码位值（65440）大于 U+3164 的码位值（12644），所以当 c 是 U+3164（代表二进制 1）时比较结果为 true，转为数字就是 1；当 c 是 U+FFA0（代表二进制 0）时比较结果为 false，转为数字就是0。
 
-这样每个不可见字符被还原为一个二进制位。每 8 位拼成一个字节（通过正则 /.{8}/g 分组），用 parseInt("0b" + bits, 10) 转回字符码，String.fromCharCode() 转回 ASCII 字符。最终拼接出完整的 JavaScript 代码字符串传给eval执行。
+>属性访问触发的时候，get 陷阱内部执行解码，+("ﾠ" > c)，U+FFA0 的码位值（65440）大于 U+3164 的码位值（12644），所以当 c 是 U+3164（代表二进制 1）时比较结果为 true，转为数字就是 1；当 c 是 U+FFA0（代表二进制 0）时比较结果为 false，转为数字就是0。
+
+>这样每个不可见字符被还原为一个二进制位。每 8 位拼成一个字节（通过正则 /.{8}/g 分组），用 parseInt("0b" + bits, 10) 转回字符码，String.fromCharCode() 转回 ASCII 字符。最终拼接出完整的 JavaScript 代码字符串传给eval执行。
 
 ### GlassWorm
 
@@ -141,6 +143,18 @@ https://www.aikido.dev/blog/glassworm-returns-unicode-attack-github-npm-vscode
 https://www.koi.ai/blog/glassworm-first-self-propagating-worm-using-invisible-code-hits-openvsx-marketplace
 
 接下来是老生常谈的npm包投毒....
+
+- Notable Compromised Repositories on GitHub
+- Among the repositories we identified, several belong to well-known projects with meaningful star counts, making them high-value targets for downstream supply chain impact:
+- pedronauck/reworm (1,460 stars)
+- pedronauck/spacefold (62 stars)
+- anomalyco/opencode-bench (56 stars)
+- doczjs/docz-plugin-css (39 stars)
+- uknfire/theGreatFilter (38 stars)
+- sillyva/rpg-schedule (37 stars)
+- wasmer-examples/hono-wasmer-starter (8 stars)
+
+![ ](/img/20260323-01.png)
 
 安全公司风险引擎标记了CodeJoy这个VS Code扩展出现可疑行为变更，发起异常网络连接并尝试未经授权地访问凭证，分析发现扩展被植入了一种前所未见的恶意软件，报告原文是"恶意代码是不可见的。不是混淆，不是隐藏在压缩文件中，而是对人眼真正不可见。"
 
@@ -159,7 +173,7 @@ GlassWorm用的是Unicode变体选择符和PUA字符隐藏
 
 当一长串变体选择符附加在一个简单的ASCII字符之后，且没有可逻辑修饰的前序字符时，这在正常文本中极不正常，是很明显的隐写术，但是它们不产生任何视觉输出，所以没有编辑器或者diff工具会标记它们。
 
-[为了方便理解，半人工半gemini做了个npm包模拟，放这里了(](https://github.com/DemondeLap1ace/unicode-steganography "为了方便理解，半人工半gemini做了个npm包模拟，放这里了(")
+[为了方便理解，半人工半AI做了个模拟，放这里了(](https://github.com/DemondeLap1ace/unicode-steganography "为了方便理解，半人工半gemini做了个npm包模拟，放这里了(")
 
 加了六个高级命令:
 
@@ -172,15 +186,15 @@ GlassWorm用的是Unicode变体选择符和PUA字符隐藏
 
 有对应的pua-npm和hangul-browser，底层原理反正都是不可见Unicode→运行时解码→执行
 
-测试的时候发现一个可以来当启发式规则的，有new Function的require报错，require不是 JS全局变量，它是Node模块包装函数的局部参数，new Function跳出了这个包装回到全局作用域，所以require不可见。
+测试的时候发现一个可以来当启发式规则的，new Function中使用require会报错。原因是require不是全局变量，它是Node模块包装函数的局部参数，new Function执行时脱离了该闭包回到全局作用域，导致requir不可见。
 
 eval在调用位置的词法作用域中执行，继承了完整的模块上下文，Node.js v24把这个收紧了.....对照了GlassWorm的代码发现它们用的是eval，不是一开始我写的new Function，所以拿eval+展开运算符和codePointAt()的组合模式是正常code里面非常非常罕见。
 
 写的时候就意识到这个方案没有任何技术门槛，连基本的密码学都不需要，让任何一个AI写都能实现一个完整的编码器，Martin Kleppe的Hangul是一个字符比较运算 +("ﾠ" > c) 同时完成类型判断和二进制提取，Tycoon 2FA直接从Kleppe的网页上复制代码连变量名都没改.....
 
-搜了一下有六万多个个不可见码位能编码使用，只要项目里面的detect遗漏了任何一个范围，攻击者就可以用那个范围绕过，尝试一个新范围的成本只是一行基址偏移量。
+搜了一下有六万多个个不可见码位能编码使用，只要项目里面的detect遗漏了任何一个范围，攻击者就可以用那个范围绕过，尝试一个新范围的成本只用一行基址偏移量。
 
-让AI跑的触发是postinstall，其他触发方式感觉更隐蔽点()可以在require触发，解码逻辑放在模块的顶层代码里面，这样任何 require('invisible-utils') 都会执行，还可以学glassworm将解码逻辑放在capitalize函数内部，只有实际调用时才执行。
+让AI跑的触发是postinstall，其他触发方式感觉更隐蔽点()可以在require触发，解码逻辑放在模块的顶层代码里面，这样任何 require('invisible-utils') 都会执行，还可以学glassworm将解码逻辑放在capitalize函数内部，只有实际调用时才执行。（补在最后了
 
 他们还搞了三层c2，完全不同的通道，就算ban一个也不影响整体。
 
@@ -235,6 +249,3 @@ Snyk的规则全是全部围绕install钩子设计的，毕竟postinstall是最�
 - 结果：[FUNCTION-TRIGGER] Payload executed!
 
 还可以学GlassWorm的毛子 ，检测系统语言，俄语区跳过执行。。。。只在特定locale下触发来地理定向，hostname/username模式匹配，测试结果中hostname的username是我自己的，如果加一个检查只在hostname匹配企业命名规范时触发，就能只打特定的机器(
-
-
-
