@@ -62,7 +62,6 @@ regsvr32 /s \\IP\hi\demo.dll触发Windows内核七层联动：MUP 驱动识别UN
 
 #### cmdkey
 
-![ ](/img/20260517-1.png)
 
 cmdkey是Windows凭据管理的命令行前端，本身只是一个thin wrapper，干活的是底层的advapi32.dll的CredWrite/CredRead/CredDelete API。
 
