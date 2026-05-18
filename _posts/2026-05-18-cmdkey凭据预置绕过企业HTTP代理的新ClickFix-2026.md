@@ -4,7 +4,7 @@ title:  cmdkey凭据预置绕过企业HTTP代理的新ClickFix
 subtitle:
 date:       2026-05-18
 author:     Closure
-header-img: img/fmq.jpg
+header-img: img/fm114514.png
 catalog: true
 tags:
 
